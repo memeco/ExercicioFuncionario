@@ -1,38 +1,41 @@
 ﻿using System;
-using System.Globalization;
 
-namespace ExercicioFuncionario
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Funcionario funcionario = new Funcionario();
+        // Leitura dos dados do funcionário
+        Console.WriteLine("Digite o nome do funcionário:");
+        string nome = Console.ReadLine();
 
-            Console.Write("Nome: ");
-            funcionario.Nome = Console.ReadLine();
+        Console.WriteLine("Digite o salário bruto do funcionário:");
+        double salarioBruto = double.Parse(Console.ReadLine());
 
-            Console.Write("Salário Bruto: ");
-            funcionario.SalarioBruto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        Console.WriteLine("Digite a porcentagem de imposto do funcionário:");
+        double imposto = double.Parse(Console.ReadLine());
 
-            Console.Write("Imposto: ");
-            funcionario.Imposto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        // Cálculo do salário líquido
+        double salarioLiquido = salarioBruto - (salarioBruto * imposto);
 
-            double salarioLiquido = funcionario.CalcularSalarioLiquido();
+        // Exibição dos dados do funcionário
+        Console.WriteLine("\nDados do Funcionário:");
+        Console.WriteLine($"Nome: {nome}");
+        Console.WriteLine($"Salário Bruto: R${salarioBruto:F2}");
+        Console.WriteLine($"Salário Líquido: R${salarioLiquido:F2}");
 
-            Console.WriteLine();
-            Console.WriteLine("Dados do funcionário: " + funcionario.Nome + ", R$ " + salarioLiquido.ToString("F2", CultureInfo.InvariantCulture));
+        // Aumento do salário do funcionário
+        Console.WriteLine("\nDigite a porcentagem de aumento do salário:");
+        double aumento = double.Parse(Console.ReadLine());
 
-            Console.WriteLine();
-            Console.Write("Digite a porcentagem para aumentar o salário: ");
-            double porcentagem = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        salarioBruto += salarioBruto * (aumento / 100);
 
-            funcionario.AumentarSalario(porcentagem);
+        // Cálculo do novo salário líquido
+        salarioLiquido = salarioBruto - (salarioBruto * imposto);
 
-            salarioLiquido = funcionario.CalcularSalarioLiquido();
-
-            Console.WriteLine();
-            Console.WriteLine("Dados atualizados: " + funcionario.Nome + ", R$ " + salarioLiquido.ToString("F2", CultureInfo.InvariantCulture));
-        }
+        // Exibição dos dados atualizados do funcionário
+        Console.WriteLine("\nDados Atualizados do Funcionário:");
+        Console.WriteLine($"Nome: {nome}");
+        Console.WriteLine($"Salário Bruto: R${salarioBruto:F2}");
+        Console.WriteLine($"Salário Líquido: R${salarioLiquido:F2}");
     }
 }
