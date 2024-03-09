@@ -26,9 +26,9 @@
         return salarioBruto - (salarioBruto * imposto);
     }
 
-    public void AumentarSalario(double porcentagem)
+    public void AumentarSalario(double aumento)
     {
-        salarioBruto += salarioBruto * (porcentagem / 100);
+        salarioBruto *= (1 + aumento / 100);
     }
 
     public override string ToString()

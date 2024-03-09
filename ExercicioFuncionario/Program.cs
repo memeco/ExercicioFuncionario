@@ -15,7 +15,7 @@ class Program
         double imposto = double.Parse(Console.ReadLine());
 
         // Cálculo do salário líquido
-        double salarioLiquido = salarioBruto - (salarioBruto * imposto);
+        double salarioLiquido = salarioBruto * (1 - imposto);
 
         // Exibição dos dados do funcionário
         Console.WriteLine("\nDados do Funcionário:");
@@ -30,7 +30,7 @@ class Program
         salarioBruto += salarioBruto * (aumento / 100);
 
         // Cálculo do novo salário líquido
-        salarioLiquido = salarioBruto - (salarioBruto * imposto);
+        salarioLiquido = salarioBruto * (1 - imposto / 100);
 
         // Exibição dos dados atualizados do funcionário
         Console.WriteLine("\nDados Atualizados do Funcionário:");
