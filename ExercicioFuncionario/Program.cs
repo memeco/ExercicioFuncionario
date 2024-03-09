@@ -7,32 +7,32 @@ namespace ExercicioFuncionario
     {
         static void Main(string[] args)
         {
-            string nome;
-            double salarioBruto, imposto, salarioLiquido;
+            Funcionario funcionario = new Funcionario();
 
             Console.Write("Nome: ");
-            nome = Console.ReadLine();
+            funcionario.Nome = Console.ReadLine();
 
             Console.Write("Salário Bruto: ");
-            salarioBruto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            funcionario.SalarioBruto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             Console.Write("Imposto: ");
-            imposto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            funcionario.Imposto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            salarioLiquido = salarioBruto - imposto;
+            double salarioLiquido = funcionario.CalcularSalarioLiquido();
 
             Console.WriteLine();
-            Console.WriteLine("Dados do funcionário: " + nome + ", R$ " + salarioLiquido.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Dados do funcionário: " + funcionario.Nome + ", R$ " + salarioLiquido.ToString("F2", CultureInfo.InvariantCulture));
 
             Console.WriteLine();
             Console.Write("Digite a porcentagem para aumentar o salário: ");
             double porcentagem = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            salarioBruto = salarioBruto + (salarioBruto * porcentagem / 100.0);
-            salarioLiquido = salarioBruto - imposto;
+            funcionario.AumentarSalario(porcentagem);
+
+            salarioLiquido = funcionario.CalcularSalarioLiquido();
 
             Console.WriteLine();
-            Console.WriteLine("Dados atualizados: " + nome + ", R$ " + salarioLiquido.ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Dados atualizados: " + funcionario.Nome + ", R$ " + salarioLiquido.ToString("F2", CultureInfo.InvariantCulture));
         }
     }
 }
