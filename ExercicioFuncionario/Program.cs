@@ -15,7 +15,13 @@ class Program
         double imposto = double.Parse(Console.ReadLine());
 
         // Cálculo do salário líquido
-        double salarioLiquido = salarioBruto * (1 - imposto);
+        double salarioLiquido = salarioBruto * (1 - imposto / 100);
+
+        // Se o imposto for superior a 100%, o salário líquido será zero
+        if (imposto > 100)
+        {
+            salarioLiquido = 0;
+        }
 
         // Exibição dos dados do funcionário
         Console.WriteLine("\nDados do Funcionário:");
