@@ -2,47 +2,47 @@
 
 public class Funcionario
 {
-    private string nome;
-    private double salarioBruto;
-    private double imposto;
+    private string _nome;
+    private double _salarioBruto;
+    private double _imposto;
 
     public Funcionario() // Construtor sem parâmetros
     {
         // Perguntar o nome do funcionário
         Console.WriteLine("Digite o nome do funcionário:");
-        nome = Console.ReadLine();
+        _nome = Console.ReadLine();
 
         // Perguntar o salário bruto do funcionário
         Console.WriteLine("Digite o salário bruto do funcionário:");
-        salarioBruto = double.Parse(Console.ReadLine());
+        _salarioBruto = double.Parse(Console.ReadLine());
 
         // Perguntar a porcentagem de imposto do funcionário
         Console.WriteLine("Digite a porcentagem de imposto do funcionário:");
-        imposto = double.Parse(Console.ReadLine());
+        _imposto = double.Parse(Console.ReadLine());
     }
 
     public string GetNome()
     {
-        return nome;
+        return _nome;
     }
 
     public double GetSalarioBruto()
     {
-        return salarioBruto;
+        return _salarioBruto;
     }
 
     public double CalcularSalarioLiquido()
     {
-        return salarioBruto - (salarioBruto * imposto);
+        return _salarioBruto - (_salarioBruto * _imposto);
     }
 
     public void AumentarSalario(double aumento)
     {
-        salarioBruto *= (1 + aumento / 100);
+        _salarioBruto *= (1 + aumento / 100);
     }
 
     public override string ToString()
     {
-        return $"Nome: {nome}\nSalário Bruto: R${salarioBruto:F2}\nSalário Líquido: R${CalcularSalarioLiquido():F2}";
+        return $"Nome: {_nome}\nSalário Bruto: R${_salarioBruto:F2}\nSalário Líquido: R${CalcularSalarioLiquido():F2}";
     }
 }
