@@ -1,14 +1,24 @@
-﻿public class Funcionario
+﻿using System;
+
+public class Funcionario
 {
     private string nome;
     private double salarioBruto;
     private double imposto;
 
-    public Funcionario(string nome, double salarioBruto, double imposto)
+    public Funcionario() // Construtor sem parâmetros
     {
-        this.nome = nome;
-        this.salarioBruto = salarioBruto;
-        this.imposto = imposto;
+        // Perguntar o nome do funcionário
+        Console.WriteLine("Digite o nome do funcionário:");
+        nome = Console.ReadLine();
+
+        // Perguntar o salário bruto do funcionário
+        Console.WriteLine("Digite o salário bruto do funcionário:");
+        salarioBruto = double.Parse(Console.ReadLine());
+
+        // Perguntar a porcentagem de imposto do funcionário
+        Console.WriteLine("Digite a porcentagem de imposto do funcionário:");
+        imposto = double.Parse(Console.ReadLine());
     }
 
     public string GetNome()
